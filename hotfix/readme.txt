@@ -1,9 +1,10 @@
 === Hotfix ===
-Contributors: markjaquith, nacin
+Contributors: markjaquith, nacin, peterwilsoncc, azaozz, jorbin 
 Tags: hotfix, bugs, wordpress, update
 Requires at least: 3.0
-Tested up to: 5.1
-Stable tag: 1.2
+License: GPLv2 or later
+Tested up to: 6.9
+Stable tag: 1.3
 
 Provides unofficial fixes for selected WordPress bugs, so you don't have to wait for the next WordPress core release.
 
@@ -13,8 +14,8 @@ This unofficial plugin provides fixes for selected WordPress bugs, so you don't 
 
 Recent fixes:
 
-* **WordPress 5.0**
-	* Lets themes enqueue `comment-reply.js` in the HTML header without JavaScript errors, see [WP#46280](https://core.trac.wordpress.org/ticket/46280).
+* **WordPress 6.9**
+	* Set sender as blank to workaround Sendmail issue when sendmail_from and -f are both used, see [WP#64368](https://core.trac.wordpress.org/ticket/64368).
 
 Fixes are specific to your version of WordPress. It may be that your version of WordPress has no fixes. That's fine. Keep the plugin activated and updated, in case you need it for a subsequent version of WordPress!
 
@@ -33,6 +34,9 @@ Or, you can do [a manual installation using FTP](http://codex.wordpress.org/Mana
 Read the "Complete Hotfix List" section in the description. A later version of the plugin may list the hotfixes in a special WordPress admin page.
 
 == Changelog ==
+= 1.3 =
+* Set sender as blank to workaround a Sendmail bug
+
 = 1.2 =
 * Lets themes enqueue `comment-reply.js` in the HTML header without JavaScript errors.
 
@@ -74,6 +78,9 @@ Read the "Complete Hotfix List" section in the description. A later version of t
 * Hotfix for WP 3.0.5 comment text KSES overzealousness.
 
 == Upgrade Notice ==
+= 1.3 =
+Upgrade if you are having trouble sending emails since WordPress 6.9 was released
+
 = 1.1 =
 Lets you update WordPress and install or update plugins and themes, which is broken on some Windows servers running IIS. (If you are affected, you will need to [update this plugin manually](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).)
 
@@ -102,6 +109,9 @@ If you're not running WordPress 3.0.5 and you're getting a "Line 19" error, this
 Allows you to see safe HTML in the admin.
 
 == Complete Hotfix List ==
+* **Wordpress 6.9**
+	* Works around issue where Sendmail fails due to `sendmail_from` and `-f` both being used.
+
 * **WordPress 3.5**
 	* Lets you update Twenty Twelve if it is shown as "broken" after installing 3.5
 	* Lets you update WordPress and install or update plugins and themes. (Only some Windows servers running IIS were affected.) You'll need to [install this plugin manually](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Hotfix
 Description: Provides "hotfixes" for selected WordPress bugs, so you don't have to wait for the next WordPress core release. Keep the plugin updated!
-Version: 1.2
+Version: 1.3
 Author: Mark Jaquith
 Author URI: http://coveredwebservices.com/
 */
@@ -34,6 +34,9 @@ function wp_hotfix_init() {
 	$hotfixes = array();
 
 	switch ( $wp_version ) {
+		case '6.9' : 
+			$hotfixes = array( '690_email_sender' ); // https://core.trac.wordpress.org/ticket/64368
+			break;
 		case '5.1' :
 			$hotfixes = array( '510_comment_reply_js' );
 			break;
@@ -253,4 +256,12 @@ function wp_hotfix_510_enqueue_comment_reply_js() {
 
 	$wp_scripts->registered['comment-reply']->src = plugins_url( "js/comment-reply$suffix.js", __FILE__ );
 	$wp_scripts->registered['comment-reply']->ver = 'wp46280';
+}
+
+function wp_hotfix_690_email_sender() {
+	add_action( 'phpmailer_init', 'wp_hotfix_690_email_sender_use_no_sender' );	
+}
+
+function wp_hotfix_690_email_sender_use_no_sender( $phpmailer ) {
+	$phpmailer->Sender = "";
 }
