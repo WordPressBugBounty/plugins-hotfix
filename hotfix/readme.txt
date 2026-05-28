@@ -1,10 +1,10 @@
 === Hotfix ===
-Contributors: markjaquith, nacin, peterwilsoncc, azaozz, jorbin 
-Tags: hotfix, bugs, wordpress, update
+Contributors: markjaquith, nacin, peterwilsoncc, azaozz, jorbin
+Tags: hotfix, bugs, update
 Requires at least: 3.0
 License: GPLv2 or later
 Tested up to: 6.9
-Stable tag: 1.3
+Stable tag: 1.4
 
 Provides unofficial fixes for selected WordPress bugs, so you don't have to wait for the next WordPress core release.
 
@@ -13,6 +13,9 @@ Provides unofficial fixes for selected WordPress bugs, so you don't have to wait
 This unofficial plugin provides fixes for selected WordPress bugs, so you don't have to wait for the next WordPress core release. **This does not mean you can stop updating WordPress!** It just means that you'll get a few selected fixes more quickly.
 
 Recent fixes:
+
+* **WordPress 7.0**
+	* Add css to post.php and post-new.php to add `flex-wrap: wrap;` to `#major-publishing-actions`. See [WP#65286](https://core.trac.wordpress.org/ticket/65286).
 
 * **WordPress 6.9**
 	* Set sender as blank to workaround Sendmail issue when sendmail_from and -f are both used, see [WP#64368](https://core.trac.wordpress.org/ticket/64368).
@@ -34,8 +37,11 @@ Or, you can do [a manual installation using FTP](http://codex.wordpress.org/Mana
 Read the "Complete Hotfix List" section in the description. A later version of the plugin may list the hotfixes in a special WordPress admin page.
 
 == Changelog ==
+= 1.4 =
+* Add css so #major-publishing-actions uses `flex-wrap: wrap;`.
+
 = 1.3 =
-* Set sender as blank to workaround a Sendmail bug
+* Set sender as blank to workaround a Sendmail bug.
 
 = 1.2 =
 * Lets themes enqueue `comment-reply.js` in the HTML header without JavaScript errors.
@@ -44,7 +50,7 @@ Read the "Complete Hotfix List" section in the description. A later version of t
 * Lets you update WordPress and install or update plugins and themes. (Only some Windows servers running IIS were affected.) You'll need to [install this plugin manually](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 = 1.0 =
-* Lets you update Twenty Twelve if it is shown as "broken" after installing 3.5
+* Lets you update Twenty Twelve if it is shown as "broken" after installing 3.5.
 
 = 0.9 =
 * Fix adding and updating Custom Fields.
@@ -78,14 +84,17 @@ Read the "Complete Hotfix List" section in the description. A later version of t
 * Hotfix for WP 3.0.5 comment text KSES overzealousness.
 
 == Upgrade Notice ==
+= 1.4 =
+Upgrade if your major post actions are overflowing.
+
 = 1.3 =
-Upgrade if you are having trouble sending emails since WordPress 6.9 was released
+Upgrade if you are having trouble sending emails since WordPress 6.9 was released.
 
 = 1.1 =
 Lets you update WordPress and install or update plugins and themes, which is broken on some Windows servers running IIS. (If you are affected, you will need to [update this plugin manually](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).)
 
 = 1.0 =
-* Lets you update Twenty Twelve if it is shown as "broken" after installing 3.5
+* Lets you update Twenty Twelve if it is shown as "broken" after installing 3.5.
 
 = 0.9 =
 Upgrade if you are having trouble with Custom Fields with WordPress 3.4.2.
@@ -109,6 +118,8 @@ If you're not running WordPress 3.0.5 and you're getting a "Line 19" error, this
 Allows you to see safe HTML in the admin.
 
 == Complete Hotfix List ==
+* **WordPress 7.0**
+	* Add css to post.php and post-new.php to add `flex-wrap: wrap;` to `#major-publishing-actions`. See [WP#65286](https://core.trac.wordpress.org/ticket/65286).
 * **Wordpress 6.9**
 	* Works around issue where Sendmail fails due to `sendmail_from` and `-f` both being used.
 

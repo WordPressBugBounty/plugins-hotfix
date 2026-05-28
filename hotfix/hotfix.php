@@ -2,7 +2,7 @@
 /*
 Plugin Name: Hotfix
 Description: Provides "hotfixes" for selected WordPress bugs, so you don't have to wait for the next WordPress core release. Keep the plugin updated!
-Version: 1.3
+Version: 1.4
 Author: Mark Jaquith
 Author URI: http://coveredwebservices.com/
 */
@@ -34,7 +34,10 @@ function wp_hotfix_init() {
 	$hotfixes = array();
 
 	switch ( $wp_version ) {
-		case '6.9' : 
+		case '7.0' :
+			$hotfixes = array( '700_publishing_actions' ); // https://core.trac.wordpress.org/ticket/65286
+			break;
+		case '6.9' :
 			$hotfixes = array( '690_email_sender' ); // https://core.trac.wordpress.org/ticket/64368
 			break;
 		case '5.1' :
@@ -259,9 +262,30 @@ function wp_hotfix_510_enqueue_comment_reply_js() {
 }
 
 function wp_hotfix_690_email_sender() {
-	add_action( 'phpmailer_init', 'wp_hotfix_690_email_sender_use_no_sender' );	
+	add_action( 'phpmailer_init', 'wp_hotfix_690_email_sender_use_no_sender' );
 }
 
 function wp_hotfix_690_email_sender_use_no_sender( $phpmailer ) {
 	$phpmailer->Sender = "";
+}
+
+function wp_hotfix_700_publishing_actions() {
+	add_action( 'admin_print_styles', 'wp_hotfix_700_publishing_actions_css' );
+}
+
+function wp_hotfix_700_publishing_actions_css() {
+	global $hook_suffix;
+
+	if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
+		return;
+	}
+	?>
+
+	<style>
+		#major-publishing-actions {
+			flex-wrap: wrap;
+		}
+	</style>
+
+	<?php
 }
